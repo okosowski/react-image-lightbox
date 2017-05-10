@@ -986,13 +986,21 @@
                                     className: styles.loadingContainer
                                 }, loadingIcon)));
                             }
-                            var titleStyle = _extends({}, transitionStyle);
-                            titleStyle.color = "white", titleStyle.textAlign = "center", titleStyle.marginTop = "50vh", 
-                            titleStyle.transform = "translate(0, -" + (bestImageInfo.height / 2 + 50) + "px)";
-                            var counterStyle = _extends({}, transitionStyle);
-                            counterStyle.color = "white", counterStyle.textAlign = "center", counterStyle.paddingLeft = bestImageInfo.width - 20, 
-                            counterStyle.transform = "translate(0, " + bestImageInfo.height / 2 + "px)", imageStyle.width = bestImageInfo.width, 
-                            imageStyle.height = bestImageInfo.height;
+                            var commonStyle = {
+                                color: "white",
+                                textAlign: "center",
+                                width: "100%",
+                                position: "absolute"
+                            }, titleStyle = _extends({}, transitionStyle, commonStyle);
+                            titleStyle.top = "50vh", titleStyle.marginTop = -(bestImageInfo.height / 2 + 50);
+                            // titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
+                            var counterStyle = _extends({}, transitionStyle, commonStyle);
+                            counterStyle.top = "50vh", counterStyle.marginTop = bestImageInfo.height / 2 + 10;
+                            // counterStyle.paddingLeft = bestImageInfo.width - 20;
+                            var counterStyleSpan = {
+                                marginLeft: bestImageInfo.width - 20
+                            };
+                            imageStyle.width = bestImageInfo.width, imageStyle.height = bestImageInfo.height;
                             var imageSrc = bestImageInfo.src;
                             discourageDownloads ? (imageStyle.backgroundImage = "url('" + imageSrc + "')", images.push(_react2.default.createElement("div", {
                                 className: imageClass + " " + styles.image + " " + styles.imageDiscourager,
@@ -1019,7 +1027,9 @@
                             }, imageTitle), _react2.default.createElement("p", {
                                 key: imageSrc + keyEndings[srcType] + "counter",
                                 style: counterStyle
-                            }, current, "/", srcLength))), images.push(_react2.default.createElement("img", {
+                            }, _react2.default.createElement("span", {
+                                style: counterStyleSpan
+                            }, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
