@@ -926,8 +926,7 @@
             }, {
                 key: "render",
                 value: function() {
-                    var _this14 = this, _props = this.props, animationDisabled = (_props.srcLength, 
-                    _props.animationDisabled), animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, imageTitle = (_props.enableZoom, 
+                    var _this14 = this, _props = this.props, current = _props.current, srcLength = _props.srcLength, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, imageTitle = (_props.enableZoom, 
                     _props.imageTitle), nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
                     _props.reactModalStyle), _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
                     // Transition settings for sliding animations
@@ -989,9 +988,11 @@
                             }
                             var titleStyle = _extends({}, transitionStyle);
                             titleStyle.color = "white", titleStyle.textAlign = "center", titleStyle.marginTop = "50vh", 
-                            titleStyle.transform = "translate(0, -" + (bestImageInfo.height / 2 + 50) + "px)", 
-                            // console.log('titleStyle', titleStyle);
-                            imageStyle.width = bestImageInfo.width, imageStyle.height = bestImageInfo.height;
+                            titleStyle.transform = "translate(0, -" + (bestImageInfo.height / 2 + 50) + "px)";
+                            var counterStyle = _extends({}, transitionStyle);
+                            counterStyle.color = "white", counterStyle.textAlign = "center", counterStyle.paddingLeft = bestImageInfo.width - 20, 
+                            counterStyle.transform = "translate(0, " + bestImageInfo.height / 2 + "px)", imageStyle.width = bestImageInfo.width, 
+                            imageStyle.height = bestImageInfo.height;
                             var imageSrc = bestImageInfo.src;
                             discourageDownloads ? (imageStyle.backgroundImage = "url('" + imageSrc + "')", images.push(_react2.default.createElement("div", {
                                 className: imageClass + " " + styles.image + " " + styles.imageDiscourager,
@@ -1002,20 +1003,22 @@
                             }, _react2.default.createElement("div", {
                                 className: "download-blocker ril-download-blocker " + styles.downloadBlocker
                             })))) : (images.push(_react2.default.createElement("div", {
+                                key: imageSrc + keyEndings[srcType] + "parent",
                                 style: {
                                     position: "absolute",
                                     height: "100vh",
                                     width: "100vw",
                                     top: 0,
                                     left: 0,
-                                    backgroundColor: "rgba(255,0,0,0.5)",
                                     transform: imageStyle.transform
                                 }
                             }, _react2.default.createElement("p", {
                                 key: imageSrc + keyEndings[srcType] + "p",
                                 style: titleStyle
-                            }, imageTitle))), // console.log('imageStyle', imageStyle);
-                            images.push(_react2.default.createElement("img", {
+                            }, imageTitle), _react2.default.createElement("p", {
+                                key: imageSrc + keyEndings[srcType] + "counter",
+                                style: counterStyle
+                            }, current, "/", srcLength))), images.push(_react2.default.createElement("img", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,

@@ -4,7 +4,7 @@ import Lightbox from '../../react-image-lightbox';
 import styles from './stylesheets/app.scss';
 
 import image1 from './images/1.jpg';
-import image2 from './images/2.jpg';
+import image2 from './images/tumblr_ophsf9rELJ1tvq1hxo3_250.jpg';
 import image3 from './images/3.jpg';
 import image4 from './images/4.jpg';
 import image1Thumb from './images/1_thumb.jpg';
@@ -125,6 +125,7 @@ class App extends Component {
                     nextSrc={images[(this.state.index + 1) % images.length]}
                     prevSrc={images[(this.state.index + images.length - 1) % images.length]}
                     srcLength={images.length}
+                    current={this.state.index + 1}
 
                     mainSrcThumbnail={thumbs[this.state.index]}
                     nextSrcThumbnail={thumbs[(this.state.index + 1) % images.length]}

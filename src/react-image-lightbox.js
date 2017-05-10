@@ -1220,6 +1220,7 @@ class ReactImageLightbox extends Component {
 
     render() {
         const {
+            current,
             srcLength,
             animationDisabled,
             animationDuration,
@@ -1314,17 +1315,16 @@ class ReactImageLightbox extends Component {
             }
     
             const titleStyle = { ...transitionStyle };
-    
-    
             titleStyle.color = 'white';
             titleStyle.textAlign = 'center';
             titleStyle.marginTop = '50vh';
-            
             titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
             
-            // console.log('titleStyle', titleStyle);
-            
-            
+            const counterStyle = { ...transitionStyle };
+            counterStyle.color = 'white';
+            counterStyle.textAlign = 'center';
+            counterStyle.paddingLeft = bestImageInfo.width - 20;
+            counterStyle.transform = `translate(0, ${bestImageInfo.height / 2}px)`;
             
             imageStyle.width  = bestImageInfo.width;
             imageStyle.height = bestImageInfo.height;
@@ -1345,23 +1345,21 @@ class ReactImageLightbox extends Component {
                 );
             } else {
                 images.push(
-                    <div style={{
-                        position: 'absolute',
-                        height: '100vh',
-                        width: '100vw',
-                        top: 0,
-                        left: 0,
-                        backgroundColor: 'rgba(255,0,0,0.5)',
-                        transform: imageStyle.transform
-                    }}>
-                        <p
-                            key={imageSrc + keyEndings[srcType] + 'p'}
-                            style={titleStyle}
-                        >{imageTitle}</p>
+                    <div
+                        key={imageSrc + keyEndings[srcType] + 'parent'}
+                        style={{
+                            position: 'absolute',
+                            height: '100vh',
+                            width: '100vw',
+                            top: 0,
+                            left: 0,
+                            transform: imageStyle.transform
+                        }}
+                    >
+                        <p key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</p>
+                        <p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>{current}/{srcLength}</p>
                     </div>
-                    
                 );
-                // console.log('imageStyle', imageStyle);
                 images.push(
                     <img
                         className={`${imageClass} ${styles.image}`}
