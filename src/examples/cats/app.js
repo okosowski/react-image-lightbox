@@ -124,6 +124,7 @@ class App extends Component {
                     mainSrc={images[this.state.index]}
                     nextSrc={images[(this.state.index + 1) % images.length]}
                     prevSrc={images[(this.state.index + images.length - 1) % images.length]}
+                    srcLength={images.length}
 
                     mainSrcThumbnail={thumbs[this.state.index]}
                     nextSrcThumbnail={thumbs[(this.state.index + 1) % images.length]}
@@ -133,6 +134,10 @@ class App extends Component {
                     onMovePrevRequest={this.movePrev}
                     onMoveNextRequest={this.moveNext}
                     onImageLoadError={App.onImageLoadError}
+
+                    imagePadding="100"
+                    enableZoom={false}
+
 
                     imageTitle={titles[this.state.index]}
                     imageCaption={captions[this.state.index]}

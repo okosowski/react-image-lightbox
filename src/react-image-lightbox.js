@@ -1220,6 +1220,7 @@ class ReactImageLightbox extends Component {
 
     render() {
         const {
+            srcLength,
             animationDisabled,
             animationDuration,
             clickOutsideToClose,
@@ -1311,7 +1312,20 @@ class ReactImageLightbox extends Component {
 
                 return;
             }
-
+    
+            const titleStyle = { ...transitionStyle };
+    
+    
+            titleStyle.color = 'white';
+            titleStyle.textAlign = 'center';
+            titleStyle.marginTop = '50vh';
+            
+            titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
+            
+            // console.log('titleStyle', titleStyle);
+            
+            
+            
             imageStyle.width  = bestImageInfo.width;
             imageStyle.height = bestImageInfo.height;
 
@@ -1330,6 +1344,24 @@ class ReactImageLightbox extends Component {
                     </div>
                 );
             } else {
+                images.push(
+                    <div style={{
+                        position: 'absolute',
+                        height: '100vh',
+                        width: '100vw',
+                        top: 0,
+                        left: 0,
+                        backgroundColor: 'rgba(255,0,0,0.5)',
+                        transform: imageStyle.transform
+                    }}>
+                        <p
+                            key={imageSrc + keyEndings[srcType] + 'p'}
+                            style={titleStyle}
+                        >{imageTitle}</p>
+                    </div>
+                    
+                );
+                // console.log('imageStyle', imageStyle);
                 images.push(
                     <img
                         className={`${imageClass} ${styles.image}`}
@@ -1424,7 +1456,7 @@ class ReactImageLightbox extends Component {
         //             image-next, image-prev, inner, next-button, not-loaded,
         //             outer, prev-button, toolbar, toolbar-left, toolbar-right,
         //             zoom-in, zoom-out
-
+        
         return (
             <Modal
                 isOpen
@@ -1480,63 +1512,63 @@ class ReactImageLightbox extends Component {
                         />
                     }
 
-                    <div // Lightbox toolbar
-                        className={`toolbar ril-toolbar ${styles.toolbar}`}
-                    >
-                        <ul className={`toolbar-left ril-toolbar-left ${styles.toolbarSide} ${styles.toolbarLeftSide}`}>
-                            <li className={`ril-toolbar__item ${styles.toolbarItem}`}>
-                                <span className={`ril-toolbar__item__child ${styles.toolbarItemChild}`}>
-                                    {imageTitle}
-                                </span>
-                            </li>
-                        </ul>
-
-                        <ul
-                            className={[
-                                'toolbar-right',
-                                'ril-toolbar-right',
-                                styles.toolbarSide,
-                                styles.toolbarRightSide,
-                            ].join(' ')}
-                        >
-                            {!toolbarButtons ? '' : toolbarButtons.map((button, i) => (
-                                <li key={i} className={`ril-toolbar__item ${styles.toolbarItem}`}>{button}</li>
-                            ))}
-
-                            {enableZoom &&
-                                <li className={`ril-toolbar__item ${styles.toolbarItem}`}>
-                                    <button // Lightbox zoom in button
-                                        type="button"
-                                        key="zoom-in"
-                                        className={`zoom-in ril-zoom-in ${zoomInButtonClasses.join(' ')}`}
-                                        onClick={zoomInButtonHandler}
-                                    />
-                                </li>
-                            }
-
-                            {enableZoom &&
-                                <li className={`ril-toolbar__item ${styles.toolbarItem}`}>
-                                    <button // Lightbox zoom out button
-                                        type="button"
-                                        key="zoom-out"
-                                        className={`zoom-out ril-zoom-out ${zoomOutButtonClasses.join(' ')}`}
-                                        onClick={zoomOutButtonHandler}
-                                    />
-                                </li>
-                            }
-
-                            <li className={`ril-toolbar__item ${styles.toolbarItem}`}>
-                                <button // Lightbox close button
-                                    type="button"
-                                    key="close"
-                                    className={'close ril-close ril-toolbar__item__child' +
-                                        ` ${styles.toolbarItemChild} ${styles.builtinButton} ${styles.closeButton}`
-                                    }
-                                    onClick={!this.isAnimating() ? this.requestClose : noop} // Ignore clicks during animation
-                                />
-                            </li>
-                        </ul>
-                    </div>
+                    {/*<div // Lightbox toolbar*/}
+                        {/*className={`toolbar ril-toolbar ${styles.toolbar}`}*/}
+                    {/*>*/}
+                        {/*<ul className={`toolbar-left ril-toolbar-left ${styles.toolbarSide} ${styles.toolbarLeftSide}`}>*/}
+                            {/*<li className={`ril-toolbar__item ${styles.toolbarItem}`}>*/}
+                                {/*<span className={`ril-toolbar__item__child ${styles.toolbarItemChild}`}>*/}
+                                    {/*{imageTitle}*/}
+                                {/*</span>*/}
+                            {/*</li>*/}
+                        {/*</ul>*/}
+                    
+                        {/*<ul*/}
+                            {/*className={[*/}
+                                {/*'toolbar-right',*/}
+                                {/*'ril-toolbar-right',*/}
+                                {/*styles.toolbarSide,*/}
+                                {/*styles.toolbarRightSide,*/}
+                            {/*].join(' ')}*/}
+                        {/*>*/}
+                            {/*{!toolbarButtons ? '' : toolbarButtons.map((button, i) => (*/}
+                                {/*<li key={i} className={`ril-toolbar__item ${styles.toolbarItem}`}>{button}</li>*/}
+                            {/*))}*/}
+                    
+                            {/*{enableZoom &&*/}
+                                {/*<li className={`ril-toolbar__item ${styles.toolbarItem}`}>*/}
+                                    {/*<button // Lightbox zoom in button*/}
+                                        {/*type="button"*/}
+                                        {/*key="zoom-in"*/}
+                                        {/*className={`zoom-in ril-zoom-in ${zoomInButtonClasses.join(' ')}`}*/}
+                                        {/*onClick={zoomInButtonHandler}*/}
+                                    {/*/>*/}
+                                {/*</li>*/}
+                            {/*}*/}
+                    
+                            {/*{enableZoom &&*/}
+                                {/*<li className={`ril-toolbar__item ${styles.toolbarItem}`}>*/}
+                                    {/*<button // Lightbox zoom out button*/}
+                                        {/*type="button"*/}
+                                        {/*key="zoom-out"*/}
+                                        {/*className={`zoom-out ril-zoom-out ${zoomOutButtonClasses.join(' ')}`}*/}
+                                        {/*onClick={zoomOutButtonHandler}*/}
+                                    {/*/>*/}
+                                {/*</li>*/}
+                            {/*}*/}
+                    
+                            {/*<li className={`ril-toolbar__item ${styles.toolbarItem}`}>*/}
+                                {/*<button // Lightbox close button*/}
+                                    {/*type="button"*/}
+                                    {/*key="close"*/}
+                                    {/*className={'close ril-close ril-toolbar__item__child' +*/}
+                                        {/*` ${styles.toolbarItemChild} ${styles.builtinButton} ${styles.closeButton}`*/}
+                                    {/*}*/}
+                                    {/*onClick={!this.isAnimating() ? this.requestClose : noop} // Ignore clicks during animation*/}
+                                {/*/>*/}
+                            {/*</li>*/}
+                        {/*</ul>*/}
+                    {/*</div>*/}
 
                     {this.props.imageCaption &&
                         <div // Image caption
