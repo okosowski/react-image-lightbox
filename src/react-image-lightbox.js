@@ -1318,19 +1318,16 @@ class ReactImageLightbox extends Component {
                 color: 'white',
                 textAlign: 'center',
                 width: '100%',
-                position: 'absolute'
+                position: 'absolute',
+                top: '50vh'
                 
             };
     
             const titleStyle = { ...transitionStyle, ...commonStyle };
-            titleStyle.top = '50vh';
-            titleStyle.marginTop = -(bestImageInfo.height / 2 + 50);
-            // titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
+            titleStyle.marginTop = -(bestImageInfo.height / 2 + 42);
             
             const counterStyle = { ...transitionStyle, ...commonStyle };
-            counterStyle.top = '50vh';
             counterStyle.marginTop = bestImageInfo.height / 2 + 10;
-            // counterStyle.paddingLeft = bestImageInfo.width - 20;
             
             const counterStyleSpan = {
                 marginLeft: bestImageInfo.width - 20
@@ -1367,7 +1364,7 @@ class ReactImageLightbox extends Component {
                             transform: imageStyle.transform
                         }}
                     >
-                        <p key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</p>
+                        <h3 key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</h3>
                         <p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>
                             <span style={counterStyleSpan}>{current}/{srcLength}</span>
                         </p>

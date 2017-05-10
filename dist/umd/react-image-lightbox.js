@@ -990,13 +990,12 @@
                                 color: "white",
                                 textAlign: "center",
                                 width: "100%",
-                                position: "absolute"
+                                position: "absolute",
+                                top: "50vh"
                             }, titleStyle = _extends({}, transitionStyle, commonStyle);
-                            titleStyle.top = "50vh", titleStyle.marginTop = -(bestImageInfo.height / 2 + 50);
-                            // titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
+                            titleStyle.marginTop = -(bestImageInfo.height / 2 + 42);
                             var counterStyle = _extends({}, transitionStyle, commonStyle);
-                            counterStyle.top = "50vh", counterStyle.marginTop = bestImageInfo.height / 2 + 10;
-                            // counterStyle.paddingLeft = bestImageInfo.width - 20;
+                            counterStyle.marginTop = bestImageInfo.height / 2 + 10;
                             var counterStyleSpan = {
                                 marginLeft: bestImageInfo.width - 20
                             };
@@ -1021,7 +1020,7 @@
                                     pointerEvents: "none",
                                     transform: imageStyle.transform
                                 }
-                            }, _react2.default.createElement("p", {
+                            }, _react2.default.createElement("h3", {
                                 key: imageSrc + keyEndings[srcType] + "p",
                                 style: titleStyle
                             }, imageTitle), _react2.default.createElement("p", {
