@@ -1010,6 +1010,7 @@
                                     width: "100vw",
                                     top: 0,
                                     left: 0,
+                                    pointerEvents: "none",
                                     transform: imageStyle.transform
                                 }
                             }, _react2.default.createElement("p", {

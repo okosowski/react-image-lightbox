@@ -1353,6 +1353,7 @@ class ReactImageLightbox extends Component {
                             width: '100vw',
                             top: 0,
                             left: 0,
+                            pointerEvents: 'none',
                             transform: imageStyle.transform
                         }}
                     >
