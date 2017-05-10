@@ -1313,18 +1313,28 @@ class ReactImageLightbox extends Component {
 
                 return;
             }
-    
-            const titleStyle = { ...transitionStyle };
-            titleStyle.color = 'white';
-            titleStyle.textAlign = 'center';
-            titleStyle.marginTop = '50vh';
-            titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
             
-            const counterStyle = { ...transitionStyle };
-            counterStyle.color = 'white';
-            counterStyle.textAlign = 'center';
-            counterStyle.paddingLeft = bestImageInfo.width - 20;
-            counterStyle.transform = `translate(0, ${bestImageInfo.height / 2}px)`;
+            const commonStyle = {
+                color: 'white',
+                textAlign: 'center',
+                width: '100%',
+                position: 'absolute'
+                
+            };
+    
+            const titleStyle = { ...transitionStyle, ...commonStyle };
+            titleStyle.top = '50vh';
+            titleStyle.marginTop = -(bestImageInfo.height / 2 + 50);
+            // titleStyle.transform = `translate(0, -${bestImageInfo.height / 2 + 50}px)`;
+            
+            const counterStyle = { ...transitionStyle, ...commonStyle };
+            counterStyle.top = '50vh';
+            counterStyle.marginTop = bestImageInfo.height / 2 + 10;
+            // counterStyle.paddingLeft = bestImageInfo.width - 20;
+            
+            const counterStyleSpan = {
+                marginLeft: bestImageInfo.width - 20
+            };
             
             imageStyle.width  = bestImageInfo.width;
             imageStyle.height = bestImageInfo.height;
@@ -1358,7 +1368,9 @@ class ReactImageLightbox extends Component {
                         }}
                     >
                         <p key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</p>
-                        <p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>{current}/{srcLength}</p>
+                        <p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>
+                            <span style={counterStyleSpan}>{current}/{srcLength}</span>
+                        </p>
                     </div>
                 );
                 images.push(
