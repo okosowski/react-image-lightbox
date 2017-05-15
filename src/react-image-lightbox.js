@@ -1370,7 +1370,6 @@ class ReactImageLightbox extends Component {
                             maxHeight: '100%',
                             pointerEvents: 'none',
                             transform: imageStyle.transform,
-                            backgroundColor: 'rgba(255,0,0,0.5)',
                             color: 'white',
                         }}
                     >
@@ -1385,16 +1384,12 @@ class ReactImageLightbox extends Component {
                             style={{
                                 position: 'absolute',
                                 width: imageStyle.width,
-                                backgroundColor: 'rgba(0,255,0,0.5)',
-                                bottom: 0,
+                                bottom: 20,
                                 left: (window.innerWidth - imageStyle.width) / 2,
                                 textAlign: 'right'
                             }}
                         >
-                            <span
-                                style={{
-                                }}
-                            >{current}/{srcLength}</span>
+                            <span>{current}/{srcLength}</span>
                         </div>
                         
                         

@@ -1025,7 +1025,6 @@
                                     maxHeight: "100%",
                                     pointerEvents: "none",
                                     transform: imageStyle.transform,
-                                    backgroundColor: "rgba(255,0,0,0.5)",
                                     color: "white"
                                 }
                             }, _react2.default.createElement("h3", {
@@ -1038,14 +1037,11 @@
                                 style: {
                                     position: "absolute",
                                     width: imageStyle.width,
-                                    backgroundColor: "rgba(0,255,0,0.5)",
-                                    bottom: 0,
+                                    bottom: 20,
                                     left: (window.innerWidth - imageStyle.width) / 2,
                                     textAlign: "right"
                                 }
-                            }, _react2.default.createElement("span", {
-                                style: {}
-                            }, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
+                            }, _react2.default.createElement("span", null, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
