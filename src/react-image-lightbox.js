@@ -1351,9 +1351,6 @@ class ReactImageLightbox extends Component {
                     </div>
                 );
             } else {
-                console.log('window.innerWidth ', window.innerWidth );
-                console.log('imageStyle.width', imageStyle.width);
-                
                 images.push(
                     <div
                         key={imageSrc + keyEndings[srcType] + 'parent'}

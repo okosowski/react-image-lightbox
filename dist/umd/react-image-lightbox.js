@@ -1009,8 +1009,7 @@
                                 key: imageSrc + keyEndings[srcType]
                             }, _react2.default.createElement("div", {
                                 className: "download-blocker ril-download-blocker " + styles.downloadBlocker
-                            })))) : (console.log("window.innerWidth ", window.innerWidth), console.log("imageStyle.width", imageStyle.width), 
-                            images.push(_react2.default.createElement("div", {
+                            })))) : (images.push(_react2.default.createElement("div", {
                                 key: imageSrc + keyEndings[srcType] + "parent",
                                 style: {
                                     position: "absolute",
