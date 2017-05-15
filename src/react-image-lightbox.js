@@ -1351,23 +1351,57 @@ class ReactImageLightbox extends Component {
                     </div>
                 );
             } else {
+                console.log('window.innerWidth ', window.innerWidth );
+                console.log('imageStyle.width', imageStyle.width);
+                
                 images.push(
                     <div
                         key={imageSrc + keyEndings[srcType] + 'parent'}
                         style={{
                             position: 'absolute',
-                            height: '100vh',
                             width: '100vw',
+                            height: imageStyle.height + 100,
                             top: 0,
                             left: 0,
+                            right: 0,
+                            bottom: 0,
+                            margin: 'auto',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             pointerEvents: 'none',
-                            transform: imageStyle.transform
+                            transform: imageStyle.transform,
+                            backgroundColor: 'rgba(255,0,0,0.5)',
+                            color: 'white',
                         }}
                     >
-                        <h3 key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</h3>
-                        <p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>
-                            <span style={counterStyleSpan}>{current}/{srcLength}</span>
-                        </p>
+                        <h3
+                            key={imageSrc + keyEndings[srcType] + 'p'}
+                            style={{
+                                textAlign: 'center'
+                            }}
+                        >{imageTitle}</h3>
+                        <div
+                            key={imageSrc + keyEndings[srcType] + 'counter'}
+                            style={{
+                                position: 'absolute',
+                                width: imageStyle.width,
+                                backgroundColor: 'rgba(0,255,0,0.5)',
+                                bottom: 0,
+                                left: (window.innerWidth - imageStyle.width) / 2,
+                                textAlign: 'right'
+                            }}
+                        >
+                            <span
+                                style={{
+                                }}
+                            >{current}/{srcLength}</span>
+                        </div>
+                        
+                        
+                        {/*<h3 key={imageSrc + keyEndings[srcType] + 'p'} style={titleStyle}>{imageTitle}</h3>*/}
+                        {/*<p key={imageSrc + keyEndings[srcType] + 'counter'} style={counterStyle}>*/}
+                            {/*<span style={counterStyleSpan}>{current}/{srcLength}</span>*/}
+                        {/*</p>*/}
                     </div>
                 );
                 images.push(

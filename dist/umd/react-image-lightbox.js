@@ -996,9 +996,9 @@
                             titleStyle.marginTop = -(bestImageInfo.height / 2 + 42);
                             var counterStyle = _extends({}, transitionStyle, commonStyle);
                             counterStyle.marginTop = bestImageInfo.height / 2 + 10;
-                            var counterStyleSpan = {
+                            ({
                                 marginLeft: bestImageInfo.width - 20
-                            };
+                            });
                             imageStyle.width = bestImageInfo.width, imageStyle.height = bestImageInfo.height;
                             var imageSrc = bestImageInfo.src;
                             discourageDownloads ? (imageStyle.backgroundImage = "url('" + imageSrc + "')", images.push(_react2.default.createElement("div", {
@@ -1009,25 +1009,42 @@
                                 key: imageSrc + keyEndings[srcType]
                             }, _react2.default.createElement("div", {
                                 className: "download-blocker ril-download-blocker " + styles.downloadBlocker
-                            })))) : (images.push(_react2.default.createElement("div", {
+                            })))) : (console.log("window.innerWidth ", window.innerWidth), console.log("imageStyle.width", imageStyle.width), 
+                            images.push(_react2.default.createElement("div", {
                                 key: imageSrc + keyEndings[srcType] + "parent",
                                 style: {
                                     position: "absolute",
-                                    height: "100vh",
                                     width: "100vw",
+                                    height: imageStyle.height + 100,
                                     top: 0,
                                     left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    margin: "auto",
+                                    maxWidth: "100%",
+                                    maxHeight: "100%",
                                     pointerEvents: "none",
-                                    transform: imageStyle.transform
+                                    transform: imageStyle.transform,
+                                    backgroundColor: "rgba(255,0,0,0.5)",
+                                    color: "white"
                                 }
                             }, _react2.default.createElement("h3", {
                                 key: imageSrc + keyEndings[srcType] + "p",
-                                style: titleStyle
-                            }, imageTitle), _react2.default.createElement("p", {
+                                style: {
+                                    textAlign: "center"
+                                }
+                            }, imageTitle), _react2.default.createElement("div", {
                                 key: imageSrc + keyEndings[srcType] + "counter",
-                                style: counterStyle
+                                style: {
+                                    position: "absolute",
+                                    width: imageStyle.width,
+                                    backgroundColor: "rgba(0,255,0,0.5)",
+                                    bottom: 0,
+                                    left: (window.innerWidth - imageStyle.width) / 2,
+                                    textAlign: "right"
+                                }
                             }, _react2.default.createElement("span", {
-                                style: counterStyleSpan
+                                style: {}
                             }, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
