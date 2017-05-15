@@ -1376,6 +1376,7 @@ class ReactImageLightbox extends Component {
                         <h3
                             key={imageSrc + keyEndings[srcType] + 'p'}
                             style={{
+                                margin: 10,
                                 textAlign: 'center'
                             }}
                         >{imageTitle}</h3>

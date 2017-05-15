@@ -1030,6 +1030,7 @@
                             }, _react2.default.createElement("h3", {
                                 key: imageSrc + keyEndings[srcType] + "p",
                                 style: {
+                                    margin: 10,
                                     textAlign: "center"
                                 }
                             }, imageTitle), _react2.default.createElement("div", {
