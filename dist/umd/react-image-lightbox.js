@@ -1039,20 +1039,17 @@
                                     width: imageStyle.width,
                                     bottom: 20,
                                     left: (window.innerWidth - imageStyle.width) / 2,
-                                    // textAlign: 'right'
-                                    display: "flex",
-                                    flexDirection: "column"
+                                    display: "flex"
                                 }
                             }, _react2.default.createElement("div", {
                                 style: {
                                     flexGrow: 1,
-                                    // width : 100px;
                                     overflow: "hidden",
                                     display: "inline-block",
                                     textOverflow: "ellipsis",
                                     whiteSpace: "nowrap"
                                 }
-                            }, extraInfo), _react2.default.createElement("div", {
+                            }, extraInfo, " "), _react2.default.createElement("div", {
                                 style: {
                                     flexShrink: 0
                                 }
