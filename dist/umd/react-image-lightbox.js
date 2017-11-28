@@ -927,7 +927,7 @@
                 key: "render",
                 value: function() {
                     var _this14 = this, _props = this.props, current = _props.current, srcLength = _props.srcLength, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, imageTitle = (_props.enableZoom, 
-                    _props.imageTitle), extraInfo = _props.extraInfo, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
+                    _props.imageTitle), attributionLink = _props.attributionLink, attributionText = _props.attributionText, licenseLink = _props.licenseLink, licenseText = _props.licenseText, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
                     _props.reactModalStyle), _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
                     // Transition settings for sliding animations
                     !animationDisabled && this.isAnimating() && (transitionStyle = _extends({}, transitionStyle, {
@@ -1049,7 +1049,11 @@
                                     textOverflow: "ellipsis",
                                     whiteSpace: "nowrap"
                                 }
-                            }, extraInfo, " "), _react2.default.createElement("div", {
+                            }, _react2.default.createElement("a", {
+                                href: attributionLink ? attributionLink : void 0
+                            }, attributionText), attributionText && licenseText && _react2.default.createElement("span", null, " / "), _react2.default.createElement("a", {
+                                href: licenseLink ? licenseLink : void 0
+                            }, licenseText), " "), _react2.default.createElement("div", {
                                 style: {
                                     flexShrink: 0
                                 }

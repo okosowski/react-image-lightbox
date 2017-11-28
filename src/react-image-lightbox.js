@@ -1228,7 +1228,10 @@ class ReactImageLightbox extends Component {
             discourageDownloads,
             enableZoom,
             imageTitle,
-            extraInfo,
+            attributionLink,
+            attributionText,
+            licenseLink,
+            licenseText,
             nextSrc,
             prevSrc,
             toolbarButtons,
@@ -1396,7 +1399,12 @@ class ReactImageLightbox extends Component {
                                     textOverflow: 'ellipsis',
                                     whiteSpace: 'nowrap'
                                 }}
-                            >{extraInfo}&nbsp;</div>
+                            >
+    
+                                <a href={attributionLink ? attributionLink : undefined}>{attributionText}</a>
+                                {attributionText && licenseText && <span> / </span>}
+                                <a href={licenseLink ? licenseLink : undefined}>{licenseText}</a>
+                                &nbsp;</div>
                             <div
                                 style={{
                                     flexShrink: 0
