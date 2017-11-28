@@ -1385,21 +1385,18 @@ class ReactImageLightbox extends Component {
                                 width: imageStyle.width,
                                 bottom: 20,
                                 left: (window.innerWidth - imageStyle.width) / 2,
-                                // textAlign: 'right'
                                 display: 'flex',
-                                flexDirection: 'column'
                             }}
                         >
                             <div
                                 style={{
                                     flexGrow: 1,
-                                    // width : 100px;
                                     overflow: 'hidden',
                                     display: 'inline-block',
                                     textOverflow: 'ellipsis',
                                     whiteSpace: 'nowrap'
                                 }}
-                            >{extraInfo}</div>
+                            >{extraInfo}&nbsp;</div>
                             <div
                                 style={{
                                     flexShrink: 0
