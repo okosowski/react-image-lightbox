@@ -926,9 +926,7 @@
             }, {
                 key: "render",
                 value: function() {
-                    var _this14 = this, _props = this.props, current = _props.current, srcLength = _props.srcLength, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, imageTitle = (_props.enableZoom, 
-                    _props.imageTitle), attributionLink = _props.attributionLink, attributionText = _props.attributionText, licenseLink = _props.licenseLink, licenseText = _props.licenseText, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
-                    _props.reactModalStyle), _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
+                    var _this14 = this, _props = this.props, current = _props.current, srcLength = _props.srcLength, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, enableZoom = _props.enableZoom, imageTitle = _props.imageTitle, attributionLink = _props.attributionLink, attributionText = _props.attributionText, licenseLink = _props.licenseLink, licenseText = _props.licenseText, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, toolbarButtons = _props.toolbarButtons, reactModalStyle = _props.reactModalStyle, _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
                     // Transition settings for sliding animations
                     !animationDisabled && this.isAnimating() && (transitionStyle = _extends({}, transitionStyle, {
                         transition: "transform " + animationDuration + "ms"
@@ -1162,7 +1160,45 @@
                         className: "next-button ril-next-button " + styles.navButtons + " " + styles.navButtonNext,
                         key: "next",
                         onClick: this.isAnimating() ? noop : this.requestMoveNext
-                    }), this.props.imageCaption && _react2.default.createElement("div", {
+                    }), _react2.default.createElement("div", {
+                        // Lightbox toolbar
+                        className: "toolbar ril-toolbar " + styles.toolbar
+                    }, _react2.default.createElement("ul", {
+                        className: "toolbar-left ril-toolbar-left " + styles.toolbarSide + " " + styles.toolbarLeftSide
+                    }, _react2.default.createElement("li", {
+                        className: "ril-toolbar__item " + styles.toolbarItem
+                    })), _react2.default.createElement("ul", {
+                        className: [ "toolbar-right", "ril-toolbar-right", styles.toolbarSide, styles.toolbarRightSide ].join(" ")
+                    }, toolbarButtons ? toolbarButtons.map(function(button, i) {
+                        return _react2.default.createElement("li", {
+                            key: i,
+                            className: "ril-toolbar__item " + styles.toolbarItem
+                        }, button);
+                    }) : "", enableZoom && _react2.default.createElement("li", {
+                        className: "ril-toolbar__item " + styles.toolbarItem
+                    }, _react2.default.createElement("button", {
+                        // Lightbox zoom in button
+                        type: "button",
+                        key: "zoom-in",
+                        className: "zoom-in ril-zoom-in " + zoomInButtonClasses.join(" "),
+                        onClick: zoomInButtonHandler
+                    })), enableZoom && _react2.default.createElement("li", {
+                        className: "ril-toolbar__item " + styles.toolbarItem
+                    }, _react2.default.createElement("button", {
+                        // Lightbox zoom out button
+                        type: "button",
+                        key: "zoom-out",
+                        className: "zoom-out ril-zoom-out " + zoomOutButtonClasses.join(" "),
+                        onClick: zoomOutButtonHandler
+                    })), _react2.default.createElement("li", {
+                        className: "ril-toolbar__item " + styles.toolbarItem
+                    }, _react2.default.createElement("button", {
+                        // Lightbox close button
+                        type: "button",
+                        key: "close",
+                        className: "close ril-close ril-toolbar__item__child" + (" " + styles.toolbarItemChild + " " + styles.builtinButton + " " + styles.closeButton),
+                        onClick: this.isAnimating() ? noop : this.requestClose
+                    })))), this.props.imageCaption && _react2.default.createElement("div", {
                         // Image caption
                         onWheel: this.handleCaptionMousewheel,
                         onMouseDown: function(event) {
