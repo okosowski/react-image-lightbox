@@ -927,7 +927,7 @@
                 key: "render",
                 value: function() {
                     var _this14 = this, _props = this.props, current = _props.current, srcLength = _props.srcLength, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, imageTitle = (_props.enableZoom, 
-                    _props.imageTitle), nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
+                    _props.imageTitle), extraInfo = _props.extraInfo, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, reactModalStyle = (_props.toolbarButtons, 
                     _props.reactModalStyle), _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
                     // Transition settings for sliding animations
                     !animationDisabled && this.isAnimating() && (transitionStyle = _extends({}, transitionStyle, {
@@ -1039,9 +1039,24 @@
                                     width: imageStyle.width,
                                     bottom: 20,
                                     left: (window.innerWidth - imageStyle.width) / 2,
-                                    textAlign: "right"
+                                    // textAlign: 'right'
+                                    display: "flex",
+                                    flexDirection: "column"
                                 }
-                            }, _react2.default.createElement("span", null, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
+                            }, _react2.default.createElement("div", {
+                                style: {
+                                    flexGrow: 1,
+                                    // width : 100px;
+                                    overflow: "hidden",
+                                    display: "inline-block",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap"
+                                }
+                            }, extraInfo), _react2.default.createElement("div", {
+                                style: {
+                                    flexShrink: 0
+                                }
+                            }, current, "/", srcLength)))), images.push(_react2.default.createElement("img", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
